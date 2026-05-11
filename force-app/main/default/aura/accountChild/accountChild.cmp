@@ -1,0 +1,7 @@
+<aura:component  controller="accountFind">
+	    <Aura:registerEvent name="accountEvent" type="c:accountEvent"/>
+     <lightning:input type="text" name="searchAccount" label="Enter" aura:id="searchAccount"
+                   placeholder="Search" /> 
+    <aura:attribute name="acc" type="map"/>
+    <button class="slds-button" onclick="{!c.searchAccountChange}" >Button</button>
+</aura:component>

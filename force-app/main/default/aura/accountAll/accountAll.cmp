@@ -1,0 +1,46 @@
+<aura:component controller="accountAll">
+	
+<aura:attribute name="lstAccount" type="String[]" />
+<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+<br/>
+<br/>
+<div >
+<div >
+Record List
+</div>
+<br/>
+ <lightning:input type="text" name="searchKey" label="Enter" aura:id="searchKey" onchange="{!c.searchKeyChange}" placeholder="Search" /> 
+<br/>
+<table >
+<thead>
+<tr >
+ 
+<th ><div  title="Name">Name</div></th>
+<th ><div  title="Type">Type</div></th>
+ 
+ 
+<th ><div title="Billing State">Billing State</div></th>
+<th ><div  title="Billing City">Billing City</div></th>
+<th ><div title="Phone">Phone</div></th>
+</tr>
+</thead>
+<tbody>
+
+<aura:iteration items="{!v.lstAccount}" var="account">
+<tr>
+ <ul>
+     <li>
+<td><div title="{!account.Name}">{!account.Name}</div></td>
+          <td><div  title="{!account.Type}">{!account.Type}</div></td>
+<td><div  title="{!account.BillingState}">{!account.BillingState}</div></td>
+<td><div  title="{!account.BillingCity}">{!account.BillingCity}</div></td>
+<td><div  title="{!account.Phone}">{!account.Phone}</div></td>
+         </li>
+    </ul>
+</tr>
+</aura:iteration>
+</tbody>
+</table>
+</div>
+
+</aura:component>

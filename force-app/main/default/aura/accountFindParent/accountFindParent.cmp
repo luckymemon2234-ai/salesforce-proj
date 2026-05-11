@@ -1,0 +1,8 @@
+<aura:component >
+    <aura:attribute name="eventName" type="list"/>
+    
+    <aura:handler name="accountEvent" event="c:accountFindEvent" 
+                  action="{!c.parentController}"/>
+    
+    <c:accountFindChild></c:accountFindChild>
+</aura:component>

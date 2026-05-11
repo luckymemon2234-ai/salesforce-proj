@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title={work}></lightning-card> 
+    <template for:each={accounts} for:item="acc">
+     <p key={acc.id}>
+     Account Name -      {acc.Name}
+     Account Id - {acc.Id}
+     </p>
+</template> 
+<template for:each={contacts} for:item="acc">
+     <p key={acc.id}>
+      Contact Name -     {acc.Name}
+      Contact  Id - {acc.Id}
+     </p>
+</template> 
+<lightning-button onclick={handleSearch}>check</lightning-button>
+accwork11==={aId} 
+
+ </template>

@@ -1,0 +1,18 @@
+<template>
+    <div>hey</div>
+    <!-- <template for:each={result} item="item">
+        <div key={item.id}>
+
+        </div>
+    </template>  -->
+    
+    <template for:each={result} for:item="acc">
+        <lightning-card  key={acc.Id}>
+        <div> {acc.title} </div>   
+        <img src={acc.images}/>
+        <div >{acc.description}</div>
+        <p></p>
+        </lightning-card>
+        
+    </template>
+</template>

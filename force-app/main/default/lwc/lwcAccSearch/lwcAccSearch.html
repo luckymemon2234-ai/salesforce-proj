@@ -1,0 +1,20 @@
+<template>
+    <lightning-input type="text" label ="enter the name" value ={accName} >
+
+    </lightning-input>
+    <lightning-button label="search account" onclick={search}></lightning-button>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>ID</th>
+        </tr>
+        <template for:each={records} for:item="acc">
+            <tr key={acc.id}>
+                <td>{acc.Name}</td>
+                <td>{acc.Phone}</td>
+                <td>{acc.Id}</td>
+            </tr>
+        </template>
+    </table>
+</template>

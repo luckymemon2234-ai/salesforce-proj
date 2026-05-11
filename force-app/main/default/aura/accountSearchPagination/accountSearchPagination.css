@@ -1,0 +1,52 @@
+.THIS {
+    
+    color: blue;
+}
+.THIS.Main{
+   color: rgba(66 103 178);
+   
+
+}
+.THIS .MInput{
+      display: grid;
+  gap: 1rem;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(auto-fit, minmax(min-content, 1fr));
+}
+.THIS .accTitle{
+    color:rgba(66 103 178);
+    font-size:100px;
+    text-align:center;
+    background-color:white;
+   
+}
+.THIS .contact{
+    color:rgba(219,0,15,0.8);
+     font-size:100px;
+    text-align:center;
+    background-color:white;
+}
+.THIS .btn-srch{
+    background-color:rgb(200,10,10);
+  /*  border-color:rgb(41,118,211);
+    border-style:solid;
+    border-width:1px;*/
+    height:36px;
+    width:105px;
+    border-radius:5px;
+    cursor:pointer;
+    color: white;
+    margin:5px 5px 5px 40rem;
+    transition: color 2s, width 2s, height 2s, box-shadow 2s;
+   
+}
+.THIS .btn-srch:hover{
+    
+    width:120px;
+    height:40px;
+    box-shadow: 2px 0 0 red;
+    
+}
+.THIS .input-one{
+   
+}

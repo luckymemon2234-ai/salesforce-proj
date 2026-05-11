@@ -1,0 +1,23 @@
+<template>
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+		<tr>
+			<td><b>Name</b></td>
+			<td><b>IsPrimary</b></td>
+			<td><b>Action</b></td>
+		</tr>
+		<template for:each={gridData} for:item="acc">
+			<tr key={acc.Id}>
+				<td>
+					{acc.Name}
+				</td>
+				<td>
+					{acc.IsPrimary}
+				</td>
+				<td>
+					<lightning-button label="update"  variant="brand" value={acc.Id} onclick={handleUpdate}>
+					</lightning-button>
+				</td>
+			</tr>
+		</template>
+	</table>
+</template>

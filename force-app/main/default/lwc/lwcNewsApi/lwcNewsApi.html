@@ -1,0 +1,16 @@
+<template>
+    <h1>
+        lwc News Room
+    </h1>
+    <div class="container">
+        <template for:each={result} for:item="item">
+
+            <div key={item.id}>
+                <img src={item.urlToImage}/>
+                <div>{item.publishedAt} </div>
+                <div>{item.title}</div>
+            </div>
+
+        </template>
+    </div> 
+</template>

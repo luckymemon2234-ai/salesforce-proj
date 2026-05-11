@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_Account_Manager</name>
+        <label>Assign Account Manager</label>
+        <locationX>50</locationX>
+        <locationY>395</locationY>
+        <assignmentItems>
+            <assignToReference>VarAccount.Id</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>VarAccount.Account_Manager__c</assignToReference>
+            <operator>Assign</operator>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_If_accountVar_is_Null</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Sales_Manager</name>
+        <label>Assign Sales Manager</label>
+        <locationX>314</locationX>
+        <locationY>395</locationY>
+        <assignmentItems>
+            <assignToReference>VarAccount.Id</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>VarAccount.Sales_manager__c</assignToReference>
+            <operator>Assign</operator>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_If_accountVar_is_Null</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_sales_Rep</name>
+        <label>Assign sales Rep</label>
+        <locationX>578</locationX>
+        <locationY>395</locationY>
+        <assignmentItems>
+            <assignToReference>VarAccount.Id</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>VarAccount.Sales_Rep2__c</assignToReference>
+            <operator>Assign</operator>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_If_accountVar_is_Null</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Check_If_accountVar_is_Null</name>
+        <label>Check If accountVar is Null</label>
+        <locationX>446</locationX>
+        <locationY>587</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_Account_Var_is_Null_false</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>VarAccount</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>update_the_account_record</targetReference>
+            </connector>
+            <label>If Account Var is Null false</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_Team_Role</name>
+        <label>Check Team Role</label>
+        <locationX>446</locationX>
+        <locationY>287</locationY>
+        <defaultConnector>
+            <targetReference>Check_If_accountVar_is_Null</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_Team_role_is_Acount_Manager</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.TeamMemberRole</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Account Manager</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Account_Manager</targetReference>
+            </connector>
+            <label>If Team role is Acount Manager</label>
+        </rules>
+        <rules>
+            <name>If_Team_role_is_Sales_manager</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.TeamMemberRole</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Sales Manager</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Sales_Manager</targetReference>
+            </connector>
+            <label>If Team role is Sales manager</label>
+        </rules>
+        <rules>
+            <name>If_Team_role_is_Sales_Rep</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.TeamMemberRole</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Sales Rep</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_sales_Rep</targetReference>
+            </connector>
+            <label>If Team role is Sales Rep</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>UserName</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.User.FirstName} &amp; {!$Record.User.LastName}</expression>
+    </formulas>
+    <interviewLabel>Account Support Group Deletion {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Account Support Group Exclusion</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>update_the_account_record</name>
+        <label>update the account record</label>
+        <locationX>314</locationX>
+        <locationY>695</locationY>
+        <inputReference>VarAccount</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>320</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_Team_Role</targetReference>
+        </connector>
+        <object>AccountTeamMember</object>
+        <recordTriggerType>Delete</recordTriggerType>
+        <triggerType>RecordBeforeDelete</triggerType>
+    </start>
+    <status>Draft</status>
+    <variables>
+        <name>VarAccount</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Account</objectType>
+    </variables>
+</Flow>

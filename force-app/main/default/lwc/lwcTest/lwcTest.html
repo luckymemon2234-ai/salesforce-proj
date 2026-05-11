@@ -1,0 +1,41 @@
+<template>
+    <lightning-card title=" Lightning Datatable in LWC">
+        <template if:true={data}>
+            <lightning-datatable key-field="id" 
+                                 data={data} 
+                                 columns={columns} 
+                                 onrowaction={handleRowActions}
+                                 onsave={handleSave}
+                                 
+                                 hide-checkbox-column 
+                                 show-row-number-column>
+            </lightning-datatable>
+        </template>
+    </lightning-card>
+    
+       
+        <!-- <lightning-card title="Opportunity Contact">
+            <template if:true={contact}>
+            <p>Contact Name: {contact.data.fields.Name.value}</p>
+            </template>
+            </lightning-card>
+    </template> -->
+    <template if:true={gridData}>
+        <lightning-datatable key-field="id" 
+                             data={gridData} 
+                             columns={gridColumns} 
+                             onrowaction={handleRowActions}
+                             onsave={handleSave}
+                             
+                             draft-values={saveDraftValues}
+                             show-row-number-column>
+        </lightning-datatable>
+    </template>
+    <!-- <lightning-tree-grid columns={gridColumns}
+    data={gridData}
+    key-field="id"
+    onrowselection={getSelectedRows}>
+        
+    </lightning-tree-grid> -->
+  
+</template>

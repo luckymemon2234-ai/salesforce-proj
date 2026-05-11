@@ -1,0 +1,26 @@
+<template>
+    <lightning-card>
+        <div class="slds-m-around_medium">
+            No of Contacts is {recordCount}<br/><br/>
+            <lightning-datatable
+                key-field="Id"
+                data={records}
+                columns={columns}
+                hide-checkbox-column="true"
+                show-row-number-column="true">
+            </lightning-datatable>  
+        </div>
+    </lightning-card>
+    <!-- <lightning-card>
+        <div class="slds-m-around_medium">
+            No of Contacts is {recordCount2}<br/><br/>
+            <lightning-datatable
+                key-field="Id"
+                data={records2}
+                columns={columns2}
+                hide-checkbox-column="true"
+                show-row-number-column="true">
+            </lightning-datatable>  
+        </div>
+    </lightning-card> -->
+</template>
