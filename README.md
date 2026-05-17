@@ -1,3 +1,42 @@
+# 🚀 Salesforce CRM Automation & HubSpot Integration Platform
+
+Enterprise Salesforce application demonstrating CRM automation, HubSpot-style integrations, asynchronous Apex processing, Experience Cloud authentication, and scalable trigger architecture.
+
+# ✨ Key Features
+
+- HubSpot/API Integration Architecture
+- Trigger Framework with Helper Classes
+- Batch Apex Processing
+- Future Method Async Operations
+- LWC & Aura Component Development
+- Opportunity & Account Automation
+- Salesforce Flow Automation
+- Community / Experience Cloud Authentication
+- Search & Pagination Components
+- Email Notification Automation
+- SOQL Optimization & Bulkification
+
+- # ⚡ Technical Highlights
+
+- Bulkified Apex Triggers
+- Reusable Helper Class Architecture
+- Asynchronous Processing using Future & Batch Apex
+- Declarative + Programmatic Automation
+- SOQL & Governor Limit Optimization
+- Parent-Child Aura Communication
+- Dynamic LWC Search Components
+- Record-Triggered Flows
+- Exception Handling Patterns
+- Scalable Integration Design
+
+- # 🚀 Deployment
+
+## Deploy using SFDX
+
+```bash
+sfdx force:source:deploy -p force-app
+
+
 This repository contains a complete Salesforce development project built using:
 
 Apex Classes
