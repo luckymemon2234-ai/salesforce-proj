@@ -49,20 +49,20 @@ Experience Cloud Login & Registration
 +---------+---------+   +-----------+------------+    +-------------+------------+
           |                         |                               |
           -----------------------------------------------------------
-                                      |
-                           +----------v-----------+
-                           | Salesforce Database  |
-                           | Accounts             |
-                           | Contacts             |
-                           | Opportunities        |
-                           | Leads                |
-                           +----------+-----------+
-                                      |
-                     ------------------------------------
-                     |                                  |
-          +----------v----------+           +-----------v------------+
-          | Aura Components     |           | Lightning Web Components|
-          | Account Search      |           | Account List            |
-          | Pagination          |           | Opportunity UI          |
-          | Parent/Child Events |           | Search Components       |
-          +---------------------+           +-------------------------+
+                 HubSpot/Webhook/API
+                          |
+                          v
+                  Salesforce Apex REST/Future Methods
+                          |
+                          v
+                  Validation & Transformation Layer
+                          |
+                          v
+                  Trigger Framework / Helper Classes
+                          |
+                          v
+                  Salesforce Objects
+                  (Account, Contact, Lead, Opportunity)
+                          |
+                          v
+                  Flows & Notifications
