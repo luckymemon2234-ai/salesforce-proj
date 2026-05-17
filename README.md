@@ -20,49 +20,82 @@ Account & Opportunity Management
 External System Integration
 Experience Cloud Login & Registration
 
+HubSpot / Webhook / External API
+                │
+                ▼
+ Salesforce Apex REST APIs
+ Future Methods / Async Processing
+                │
+                ▼
+ Validation & Transformation Layer
+                │
+                ▼
+ Trigger Framework & Helper Classes
+                │
+                ▼
+ Salesforce Standard Objects
+ (Account, Contact, Lead, Opportunity)
+                │
+                ▼
+ Flows, Notifications & Automation
+# 🏗️ High-Level Salesforce Architecture
 
-                           +----------------------+
-                           |     External Apps    |
-                           |  (HubSpot / APIs)    |
-                           +----------+-----------+
-                                      |
-                                      | REST API / Future Calls
-                                      |
-                        +-------------v--------------+
-                        |     Apex Integration       |
-                        |  Controllers & Helpers     |
-                        |                            |
-                        |  - leadFuture.cls          |
-                        |  - lwcFakeStore.cls        |
-                        |  - lwcSpoonacular.cls      |
-                        +-------------+--------------+
-                                      |
-          ----------------------------------------------------------
-          |                         |                              |
-          |                         |                              |
-+---------v---------+   +-----------v-----------+    +-------------v------------+
-|   Apex Triggers   |   |   Salesforce Flows    |    | Batch/Scheduled Jobs     |
-|                   |   |                        |    |                           |
-| Account Trigger   |   | Opportunity Flows     |    | batchAddress.cls          |
-| Opportunity Logic |   | Notification Flows    |    | batchTask.cls             |
-| Lead Automation   |   | Approval Processes    |    | batchOpptyStage.cls       |
-+---------+---------+   +-----------+------------+    +-------------+------------+
-          |                         |                               |
-          -----------------------------------------------------------
-                 HubSpot/Webhook/API
-                          |
-                          v
-                  Salesforce Apex REST/Future Methods
-                          |
-                          v
-                  Validation & Transformation Layer
-                          |
-                          v
-                  Trigger Framework / Helper Classes
-                          |
-                          v
-                  Salesforce Objects
-                  (Account, Contact, Lead, Opportunity)
-                          |
-                          v
-                  Flows & Notifications
+```text
++----------------------------------------------------------------------------------+
+|                           External Applications                                  |
+|                          (HubSpot / REST APIs)                                   |
++-----------------------------------+----------------------------------------------+
+                                    |
+                                    | REST API / Future Methods
+                                    ▼
+
++----------------------------------------------------------------------------------+
+|                           Apex Integration Layer                                 |
+|----------------------------------------------------------------------------------|
+| Controllers & Helper Classes                                                     |
+|                                                                                  |
+| • leadFuture.cls                                                                 |
+| • lwcFakeStore.cls                                                               |
+| • lwcSpoonacular.cls                                                             |
++-----------------------------------+----------------------------------------------+
+                                    |
+        +---------------------------+---------------------------+
+        |                           |                           |
+        ▼                           ▼                           ▼
+
++------------------------+  +------------------------+  +------------------------+
+|      Apex Triggers     |  |    Salesforce Flows    |  | Batch/Scheduled Jobs   |
+|------------------------|  |------------------------|  |------------------------|
+| • Account Logic        |  | • Opportunity Flows    |  | • batchAddress.cls     |
+| • Lead Automation      |  | • Notifications        |  | • batchTask.cls        |
+| • Opportunity Process  |  | • Approval Processes   |  | • batchOpptyStage.cls  |
+| • Assignment Rules     |  | • Auto Updates         |  | • Scheduled Execution  |
++------------+-----------+  +------------+-----------+  +------------+-----------+
+             \                          |                          /
+              \                         |                         /
+               \                        |                        /
+                +-----------------------+-----------------------+
+                                        |
+                                        ▼
+
++----------------------------------------------------------------------------------+
+|                          Salesforce Database Layer                               |
+|----------------------------------------------------------------------------------|
+| • Accounts                                                                       |
+| • Contacts                                                                       |
+| • Leads                                                                          |
+| • Opportunities                                                                  |
++-----------------------------------+----------------------------------------------+
+                                    |
+                    +---------------+---------------+
+                    |                               |
+                    ▼                               ▼
+
++--------------------------------+   +---------------------------------------------+
+|        Aura Components         |   |     Lightning Web Components (LWC)          |
+|--------------------------------|   |---------------------------------------------|
+| • Account Search               |   | • Account List                              |
+| • Pagination                   |   | • Opportunity UI                            |
+| • Parent / Child Events        |   | • Search Components                         |
++--------------------------------+   +---------------------------------------------+
+```------------+
